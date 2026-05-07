@@ -1,99 +1,125 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { ExternalLink } from 'lucide-react'
 
 const certifications = [
   {
-    title: 'AWS Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    year: '2024',
-    icon: '☁',
-    color: '#FF9900',
-    badge: 'CLF-C02',
+    title: 'Software Engineer Intern Certification',
+    issuer: 'HackerRank',
+    date: 'Feb 2026',
+    credentialId: 'B42809F5F0F0',
+    color: '#39ff14',
+    icon: '🏅',
+    link: 'https://www.hackerrank.com/certificates/b42809f5f0f0',
   },
   {
-    title: 'Java SE 11 Developer',
-    issuer: 'Oracle',
-    year: '2023',
-    icon: '☕',
-    color: '#FF6B35',
-    badge: 'OCA',
+    title: 'IBM Z Datathon 2025',
+    issuer: 'IBM',
+    date: '2025',
+    credentialId: null,
+    color: '#00f5ff',
+    icon: '🧠',
+    link: 'https://drive.google.com/file/d/1Jhb9DBEF2dAofiLOWqgS0sQbZmEKGFbk/view?usp=sharing',
   },
   {
-    title: 'Spring Professional',
-    issuer: 'VMware / Spring',
-    year: '2024',
-    icon: '🌱',
-    color: '#6DB33F',
-    badge: 'SPRING',
-  },
-  {
-    title: 'React Developer Certified',
-    issuer: 'Meta / Coursera',
-    year: '2023',
-    icon: '⚛',
-    color: '#61DAFB',
-    badge: 'REACT',
-  },
-  {
-    title: 'Docker Fundamentals',
-    issuer: 'Docker Inc.',
-    year: '2024',
-    icon: '🐳',
-    color: '#2496ED',
-    badge: 'DOCKER',
-  },
-  {
-    title: 'Full Stack Web Dev',
-    issuer: 'Coursera / Johns Hopkins',
-    year: '2023',
-    icon: '🚀',
+    title: '5-Day AI Agents Intensive Course with Google',
+    issuer: 'Kaggle & Google',
+    date: '2026',
+    credentialId: null,
     color: '#bf5fff',
-    badge: 'FS-DEV',
+    icon: '🤖',
+    link: 'https://drive.google.com/file/d/1HN6AeDXByWQmXtLd-qbeutu81OZVn08z/view?usp=sharing',
+  },
+  {
+    title: 'SQL and Relational Databases 101',
+    issuer: 'IBM & Cognitive Class',
+    date: 'Mar 2025',
+    credentialId: null,
+    color: '#FF9900',
+    icon: '🗄️',
+    link: 'https://drive.google.com/file/d/14MkvKefexa4a9_dWSnXP1aGnemG8_r4X/view?usp=sharing',
+  },
+  {
+    title: 'Programming with JavaScript',
+    issuer: 'Meta & Coursera',
+    date: 'May 2025',
+    credentialId: null,
+    color: '#ffd700',
+    icon: '⚡',
+    link: 'https://drive.google.com/file/d/1tyfKX68ZpT1Mx2VOeZVLXLaFPZni3teW/view?usp=sharing',
   },
 ]
 
 function CertCard({ cert, index, inView }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -6, scale: 1.02 }}
-      className="glass rounded-xl p-6 group relative overflow-hidden"
+      className="group relative glass rounded-2xl p-5 overflow-hidden flex flex-col gap-3"
       style={{ border: `1px solid ${cert.color}22` }}
     >
-      {/* Shimmer sweep */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: `linear-gradient(135deg, transparent 0%, ${cert.color}08 50%, transparent 100%)` }} />
-
-      {/* Badge */}
-      <div className="absolute top-3 right-3 font-mono text-[9px] px-2 py-0.5 rounded"
-        style={{ background: `${cert.color}15`, border: `1px solid ${cert.color}33`, color: cert.color }}>
-        {cert.badge}
-      </div>
-
-      {/* Icon */}
-      <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
-        style={{
-          background: `radial-gradient(circle, ${cert.color}22, ${cert.color}08)`,
-          border: `1px solid ${cert.color}33`,
-          boxShadow: `0 0 16px ${cert.color}22`,
-        }}>
-        {cert.icon}
-      </div>
-
-      <h3 className="font-orbitron font-bold text-white text-sm mb-1 pr-10">{cert.title}</h3>
-      <p className="font-inter text-xs text-white/40 mb-1">{cert.issuer}</p>
-      <p className="font-mono text-xs" style={{ color: cert.color }}>{cert.year}</p>
-
-      {/* Bottom glow line */}
+      {/* Animated top border */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        initial={{ scaleX: 0 }}
-        animate={inView ? { scaleX: 1 } : {}}
-        transition={{ delay: index * 0.1 + 0.3, duration: 0.8 }}
-        style={{ background: `linear-gradient(90deg, transparent, ${cert.color}, transparent)` }}
+        className="absolute top-0 left-0 right-0 h-px"
+        animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        style={{
+          background: `linear-gradient(90deg, transparent, ${cert.color}, transparent)`,
+          backgroundSize: '200% 100%',
+        }}
       />
+
+      {/* Hover glow */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"
+        style={{ background: `radial-gradient(circle at 50% 0%, ${cert.color}12 0%, transparent 70%)` }}
+      />
+
+      <div className="relative z-10 flex items-start justify-between gap-3">
+        {/* Icon + text */}
+        <div className="flex items-start gap-3 flex-1 min-w-0">
+          <div
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+            style={{ background: `${cert.color}18`, border: `1.5px solid ${cert.color}44` }}
+          >
+            {cert.icon}
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-orbitron font-bold text-white text-sm leading-snug">{cert.title}</h3>
+            <p className="font-inter text-white/50 text-xs mt-1">{cert.issuer}</p>
+          </div>
+        </div>
+
+        {/* View link */}
+        <motion.a
+          href={cert.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.15 }}
+          title="View Certificate"
+          className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/15 transition-colors flex-shrink-0"
+          style={{ border: `1px solid ${cert.color}33` }}
+        >
+          <ExternalLink size={13} color={cert.color} />
+        </motion.a>
+      </div>
+
+      {/* Bottom row: date + credential */}
+      <div className="relative z-10 flex items-center justify-between gap-2 flex-wrap">
+        <span
+          className="font-mono text-[10px] px-2 py-0.5 rounded-full tracking-widest"
+          style={{ background: `${cert.color}15`, border: `1px solid ${cert.color}33`, color: cert.color }}
+        >
+          {cert.date}
+        </span>
+        {cert.credentialId && (
+          <span className="font-mono text-[10px] text-white/30 tracking-wide">
+            ID: {cert.credentialId}
+          </span>
+        )}
+      </div>
     </motion.div>
   )
 }
@@ -104,8 +130,10 @@ export default function Certifications() {
   return (
     <section id="certifications" ref={ref} className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 cyber-bg opacity-20" />
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(255,153,0,0.06) 0%, transparent 70%)' }} />
+      <div
+        className="absolute left-0 top-1/3 w-96 h-96 pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(57,255,20,0.04) 0%, transparent 70%)' }}
+      />
 
       <div className="section-container relative z-10">
         <motion.div
@@ -113,17 +141,19 @@ export default function Certifications() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-16"
         >
-          <span className="font-mono text-xs text-neon-gold/60 tracking-[0.4em] uppercase">Achievements</span>
+          <span className="font-mono text-xs text-neon-green/60 tracking-[0.4em] uppercase">Achievements</span>
           <h2 className="font-orbitron font-bold text-4xl md:text-5xl text-white mt-2">
-            <span className="gradient-text-gold">Certifications</span>
+            Certifi<span className="gradient-text">cations</span>
           </h2>
-          <div className="w-24 h-px mx-auto mt-4"
-            style={{ background: 'linear-gradient(90deg, transparent, var(--neon-gold), transparent)' }} />
+          <div
+            className="w-24 h-px mx-auto mt-4"
+            style={{ background: 'linear-gradient(90deg, transparent, var(--neon-green), transparent)' }}
+          />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {certifications.map((cert, i) => (
-            <CertCard key={cert.title} cert={cert} index={i} inView={inView} />
+            <CertCard key={i} cert={cert} index={i} inView={inView} />
           ))}
         </div>
       </div>
