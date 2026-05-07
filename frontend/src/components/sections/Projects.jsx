@@ -1,59 +1,58 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ExternalLink } from 'lucide-react'
-import { GithubIcon } from '../ui/BrandIcons'
+import { Eye, Code2 } from 'lucide-react'
 
 const projects = [
   {
     id: 'bloodbank',
-    title: 'Smart Blood Bank Management System',
-    description: 'AI-powered blood bank management with ML-based demand prediction, emergency notification system, multi-portal authentication, and real-time donor tracking.',
-    tech: ['React.js', 'Spring Boot', 'MySQL', 'Python ML', 'JWT', 'SMTP'],
+    title: 'Smart Blood Bank Management System — LifeFlow',
+    description: 'A full-stack smart blood bank management platform that connects hospitals, blood banks, and donors through real-time emergency coordination, cross blood compatibility matching, ML-based demand prediction, and secure role-based management.',
+    tech: ['React.js', 'Spring Boot', 'MySQL/TiDB', 'Python FastAPI', 'JWT', 'Docker', 'SMTP'],
     features: [
-      '🧠 ML demand forecasting',
-      '🚨 Emergency alert system',
-      '🏥 Multi-portal (Hospital/Blood Bank/Donor)',
-      '📊 Real-time inventory management',
+      '🩸 Emergency blood request system with cross blood compatibility matching',
+      '🔔 Real-time email notifications for donors and blood banks during emergencies',
+      '🤖 ML-based blood demand prediction and demand level classification',
+      '🏥 Secure role-based dashboards for Admin, Hospital, Blood Bank, and Donor',
     ],
     gradient: 'from-red-500/20 to-pink-500/10',
     borderColor: '#ff2d78',
     icon: '🩸',
-    github: 'https://github.com/',
-    demo: '#',
+    github: 'https://github.com/Yaswanth0324/Blood-Bank-Management-System',
+    demo: 'https://drive.google.com/file/d/1aUVhYL4MSRuEgS7ZnYs5ujApKe75fhde/view?usp=drive_link',
+  },
+  {
+    id: 'nlp-lab',
+    title: 'NLP Virtual Lab',
+    description: 'A web-based learning platform where users can explore and practice Natural Language Processing concepts through interactive experiments and AI-powered tools.',
+    tech: ['Python', 'Flask', 'NLTK', 'PostgreSQL', 'JavaScript'],
+    features: [
+      '🧪 14 Interactive Labs: Hands-on modules from basic text cleaning to advanced AI translation',
+      '🤖 AI Learning Assistant: Built-in smart chatbot that explains complex NLP topics',
+      '📈 Visual Data Results: Charts and tree diagrams that visualize text processing',
+      '📝 Knowledge Quizzes: Practice tests pulling fresh questions from a live database',
+    ],
+    gradient: 'from-green-500/20 to-teal-500/10',
+    borderColor: '#39ff14',
+    icon: '🧪',
+    github: 'https://github.com/Yaswanth0324/NLP-Virtual-Lab',
+    demo: 'https://nlp-virtual-lab.onrender.com/',
   },
   {
     id: 'taskmaster',
     title: 'TaskMaster',
-    description: 'A feature-rich task management application with drag-and-drop boards, priority queues, team collaboration, and real-time progress tracking.',
-    tech: ['React.js', 'JavaScript', 'Tailwind CSS', 'Spring Boot', 'MySQL'],
+    description: 'A full-stack task management application with AI voice-based reminders, real-time task tracking, secure profile management, and progress monitoring using React, Node.js, MySQL, and MongoDB.',
+    tech: ['React.js', 'JavaScript', 'Bootstrap', 'Node.js', 'Express.js', 'MySQL', 'MongoDB'],
     features: [
-      '📋 Kanban drag-and-drop boards',
-      '⏰ Priority & deadline management',
-      '👥 Team collaboration features',
-      '📈 Progress analytics dashboard',
+      '✅ Create, manage, and delete tasks with due dates and smart reminders',
+      '🗣️ AI voice-based reminder notifications for scheduled tasks',
+      '👤 User profile management with image upload and MongoDB storage',
+      '📊 Real-time task progress tracking dashboard with completion analytics',
     ],
     gradient: 'from-cyan-500/20 to-blue-500/10',
     borderColor: '#00f5ff',
     icon: '✅',
-    github: 'https://github.com/',
-    demo: '#',
-  },
-  {
-    id: 'algo-rec',
-    title: 'Intelligent Algorithm Recommendation System',
-    description: 'An AI-driven system that analyzes problem characteristics and recommends optimal algorithms using machine learning classification models.',
-    tech: ['Python', 'ML/AI', 'React.js', 'REST API', 'Scikit-learn'],
-    features: [
-      '🤖 ML-based algorithm classifier',
-      '📊 Problem complexity analyzer',
-      '🔍 Pattern recognition engine',
-      '📚 Algorithm knowledge base',
-    ],
-    gradient: 'from-purple-500/20 to-violet-500/10',
-    borderColor: '#bf5fff',
-    icon: '🧠',
-    github: 'https://github.com/',
-    demo: '#',
+    github: 'https://github.com/Yaswanth0324/Task-Master1',
+    demo: 'https://task-master1-sooty.vercel.app/',
   },
 ]
 
@@ -84,25 +83,29 @@ function ProjectCard({ project, index, inView }) {
         <div className="flex items-start justify-between">
           <div className="text-4xl mb-3">{project.icon}</div>
           <div className="flex gap-2">
-            <motion.a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-              style={{ border: `1px solid ${project.borderColor}33` }}
-            >
-              <GithubIcon size={14} color={project.borderColor} />
-            </motion.a>
+            {/* Demo / Live button — Eye icon */}
             <motion.a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
-              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-              style={{ border: `1px solid ${project.borderColor}33` }}
+              title="Live Demo"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              style={{ border: `1px solid ${project.borderColor}55` }}
             >
-              <ExternalLink size={14} color={project.borderColor} />
+              <Eye size={16} color={project.borderColor} />
+            </motion.a>
+            {/* GitHub button — Code icon */}
+            <motion.a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              title="GitHub"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              style={{ border: `1px solid ${project.borderColor}55` }}
+            >
+              <Code2 size={16} color={project.borderColor} />
             </motion.a>
           </div>
         </div>
