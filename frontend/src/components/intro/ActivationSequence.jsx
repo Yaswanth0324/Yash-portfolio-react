@@ -2,7 +2,9 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 
-const letters = 'AI CORE ACTIVATED'.split('')
+const line1 = 'DEVELOPER INTERFACE'.split('')
+const line2 = 'ACTIVATED'.split('')
+const letters = [...line1, ...line2]
 
 export default function ActivationSequence({ onComplete }) {
   const containerRef = useRef(null)
@@ -70,22 +72,41 @@ export default function ActivationSequence({ onComplete }) {
         />
       </motion.div>
 
-      {/* Main text */}
-      <div className="activation-text flex gap-0.5 flex-wrap justify-center px-4">
-        {letters.map((char, i) => (
-          <span
-            key={i}
-            ref={el => lettersRef.current[i] = el}
-            className="font-orbitron font-black text-3xl md:text-5xl lg:text-7xl tracking-widest"
-            style={{
-              color: 'var(--neon-cyan)',
-              display: char === ' ' ? 'inline-block' : 'inline-block',
-              width: char === ' ' ? '1rem' : 'auto',
-            }}
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </span>
-        ))}
+      {/* Main text — two lines */}
+      <div className="activation-text flex flex-col items-center gap-2 px-4">
+        {/* Line 1: DEVELOPER INTERFACE */}
+        <div className="flex gap-0.5 justify-center">
+          {line1.map((char, i) => (
+            <span
+              key={i}
+              ref={el => lettersRef.current[i] = el}
+              className="font-orbitron font-black text-3xl md:text-5xl lg:text-6xl tracking-widest"
+              style={{
+                color: 'var(--neon-cyan)',
+                display: 'inline-block',
+                width: char === ' ' ? '1rem' : 'auto',
+              }}
+            >
+              {char === ' ' ? '\u00A0' : char}
+            </span>
+          ))}
+        </div>
+        {/* Line 2: ACTIVATED */}
+        <div className="flex gap-0.5 justify-center">
+          {line2.map((char, i) => (
+            <span
+              key={i + line1.length}
+              ref={el => lettersRef.current[i + line1.length] = el}
+              className="font-orbitron font-black text-3xl md:text-5xl lg:text-6xl tracking-widest"
+              style={{
+                color: 'var(--neon-cyan)',
+                display: 'inline-block',
+              }}
+            >
+              {char}
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* Status line */}

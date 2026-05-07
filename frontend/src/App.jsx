@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ThemeProvider } from './context/ThemeContext'
-import AICoreIntro from './components/intro/AICoreIntro'
+import PortfolioIntro from './components/intro/PortfolioIntro'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import CustomCursor from './components/layout/CustomCursor'
@@ -98,7 +98,7 @@ export default function App() {
     <ThemeProvider>
       <CustomCursor />
       {!showPortfolio ? (
-        <AICoreIntro key="intro" onComplete={handleIntroComplete} />
+        <PortfolioIntro key="intro" onComplete={handleIntroComplete} />
       ) : (
         <Portfolio key="portfolio" />
       )}

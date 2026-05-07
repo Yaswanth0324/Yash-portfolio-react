@@ -41,7 +41,7 @@ function BootText({ onComplete }) {
       </div>
 
       <motion.div className="mb-8 text-center" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
-        <div className="font-orbitron font-black text-5xl md:text-7xl tracking-widest gradient-text glow-cyan mb-2">AI CORE</div>
+        <div className="font-orbitron font-black text-5xl md:text-7xl tracking-widest gradient-text glow-cyan mb-2">Portfolio</div>
         <div className="font-mono text-xs text-white/40 tracking-[0.5em]">DEVELOPER INTERFACE v2.0</div>
       </motion.div>
 
@@ -77,7 +77,7 @@ function BootText({ onComplete }) {
   )
 }
 
-export default function AICoreIntro({ onComplete }) {
+export default function PortfolioIntro({ onComplete }) {
   const [stage, setStage] = useState('boot')
   const [nodesActivated, setNodesActivated] = useState(false)
 
@@ -135,7 +135,7 @@ export default function AICoreIntro({ onComplete }) {
       </motion.button>
 
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-[9px] text-white/20 tracking-[0.3em] z-20">
-        AI-CORE · DEVELOPER INTERFACE · 2025
+        PORTFOLIO · DEVELOPER INTERFACE · 2026
       </div>
     </div>
   )
