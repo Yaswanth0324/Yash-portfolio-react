@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Send, Mail, User, MessageSquare } from 'lucide-react'
+import { Send, Mail, User, MessageSquare, Phone } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '../ui/BrandIcons'
 import toast, { Toaster } from 'react-hot-toast'
 import { submitContact } from '../../api/portfolio'
 
 const socials = [
-  { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/', color: '#fff' },
-  { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://linkedin.com/', color: '#0077B5' },
-  { icon: Mail, label: 'Email', href: 'mailto:developer@email.com', color: '#00f5ff' },
+  { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/Yaswanth0324', color: '#fff' },
+  { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/yaswanth-sde/', color: '#0077B5' },
+  { icon: Mail, label: 'Email', href: 'mailto:yash95632@gmail.com', color: '#00f5ff' },
 ]
 
 function FloatingInput({ id, label, icon: Icon, type = 'text', rows, value, onChange, required }) {
@@ -23,11 +23,10 @@ function FloatingInput({ id, label, icon: Icon, type = 'text', rows, value, onCh
 
   return (
     <div className="relative group">
-      <div className={`relative glass rounded-xl overflow-hidden transition-all duration-300 ${
-        focused ? 'border-neon-cyan/50 shadow-neon-cyan/20 shadow-lg' : 'border-white/10'
-      }`}
+      <div className={`relative glass rounded-xl overflow-hidden transition-all duration-300 ${focused ? 'border-neon-cyan/50 shadow-neon-cyan/20 shadow-lg' : 'border-white/10'
+        }`}
         style={{ border: `1px solid ${focused ? 'rgba(0,245,255,0.4)' : 'rgba(255,255,255,0.08)'}` }}>
-        
+
         {/* Label */}
         <label
           htmlFor={id}
@@ -160,7 +159,7 @@ export default function Contact() {
             <div>
               <h3 className="font-orbitron font-bold text-white text-xl mb-2">Let's Collaborate</h3>
               <p className="text-white/40 font-inter text-sm leading-relaxed">
-                I'm open to internships, full-time roles, freelance projects, and exciting collaborations. 
+                I'm open to Entry Level roles, Full time roles, and exciting collaborations.
                 Let's build something amazing.
               </p>
             </div>
@@ -168,7 +167,8 @@ export default function Contact() {
             {/* Contact info */}
             <div className="space-y-3">
               {[
-                { icon: Mail, label: 'developer@email.com', color: 'var(--neon-cyan)' },
+                { icon: Mail, label: 'yash95632@gmail.com', color: 'var(--neon-cyan)', href: 'mailto:yash95632@gmail.com' },
+                { icon: Phone, label: '+91 8247302169', color: 'var(--neon-green)', href: 'tel:+918247302169' },
               ].map(({ icon: Icon, label, color }) => (
                 <div key={label} className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg glass flex items-center justify-center"

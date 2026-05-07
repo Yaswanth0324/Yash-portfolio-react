@@ -3,9 +3,9 @@ import { Mail } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '../ui/BrandIcons'
 
 const socials = [
-  { icon: GithubIcon, href: 'https://github.com/', label: 'GitHub' },
-  { icon: LinkedinIcon, href: 'https://linkedin.com/', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:developer@email.com', label: 'Email' },
+  { icon: GithubIcon, href: 'https://github.com/Yaswanth0324', label: 'GitHub' },
+  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/yaswanth-sde/', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:yash95632@gmail.com', label: 'Email' },
 ]
 
 export default function Footer() {
@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand */}
           <div className="text-center md:text-left">
-            <div className="font-orbitron font-bold text-xl gradient-text mb-1">AI CORE</div>
+            <div className="font-orbitron font-bold text-xl gradient-text mb-1">YASWANTH</div>
             <p className="font-mono text-xs text-white/40">Full-Stack Developer Portfolio</p>
           </div>
 
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className="text-center text-xs text-white/30 font-mono">
-            <p>© 2025 Dev Portfolio</p>
+            <p>© 2026 Dev Portfolio</p>
             <p className="mt-1">Built with <span className="text-neon-pink">♥</span> & React</p>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function Footer() {
         {/* Bottom glow line */}
         <div className="mt-8 pt-6 border-t border-white/5 text-center">
           <p className="font-mono text-[10px] text-white/20 tracking-widest uppercase">
-            System Status: <span style={{ color: 'var(--neon-green)' }}>Online</span> · AI Core: <span style={{ color: 'var(--neon-cyan)' }}>Activated</span>
+            System Status: <span style={{ color: 'var(--neon-green)' }}>Online</span> DEVELOPER: <span style={{ color: 'var(--neon-cyan)' }}>Activated</span>
           </p>
         </div>
       </div>

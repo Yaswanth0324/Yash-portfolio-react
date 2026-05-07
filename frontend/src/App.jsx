@@ -28,9 +28,9 @@ function FloatingSocials() {
     >
       <div className="w-px h-16" style={{ background: 'linear-gradient(180deg, transparent, var(--neon-cyan))' }} />
       {[
-        { icon: GithubIcon, href: 'https://github.com/', label: 'GitHub' },
-        { icon: LinkedinIcon, href: 'https://linkedin.com/', label: 'LinkedIn' },
-        { icon: Mail, href: 'mailto:developer@email.com', label: 'Email' },
+        { icon: GithubIcon, href: 'https://github.com/Yaswanth0324', label: 'GitHub' },
+        { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/yaswanth-sde/', label: 'LinkedIn' },
+        { icon: Mail, href: 'mailto:yash95632@gmail.com', label: 'Email' },
       ].map(({ icon: Icon, href, label }) => (
         <motion.a
           key={label}

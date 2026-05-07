@@ -43,9 +43,9 @@ function useTypewriter(items, speed = 60, pause = 1800) {
 }
 
 const socials = [
-  { icon: GithubIcon, href: 'https://github.com/', label: 'GitHub', color: '#fff' },
-  { icon: LinkedinIcon, href: 'https://linkedin.com/', label: 'LinkedIn', color: '#0077B5' },
-  { icon: Mail, href: 'mailto:developer@email.com', label: 'Email', color: '#00f5ff' },
+  { icon: GithubIcon, href: 'https://github.com/Yaswanth0324', label: 'GitHub', color: '#fff' },
+  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/yaswanth-sde/', label: 'LinkedIn', color: '#0077B5' },
+  { icon: Mail, href: 'mailto:yash95632@gmail.com', label: 'Email', color: '#00f5ff' },
 ]
 
 export default function Hero() {
