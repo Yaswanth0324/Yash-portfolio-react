@@ -69,17 +69,13 @@ export default function About() {
               ))}
 
               {/* Avatar circle */}
-              <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-glow"
-                style={{ border: '2px solid rgba(0,245,255,0.4)' }}>
-                <div className="w-full h-full rounded-full flex items-center justify-center"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(0,245,255,0.1), rgba(191,95,255,0.1))',
-                  }}>
-                  <div className="text-center">
-                    <div className="text-7xl mb-2">👨‍💻</div>
-                    <div className="font-mono text-xs text-white/40">DEVELOPER</div>
-                  </div>
-                </div>
+              <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden"
+                style={{ border: '2px solid rgba(0,245,255,0.4)', boxShadow: '0 0 30px rgba(0,245,255,0.2)' }}>
+                <img
+                  src="/Yaswanth.png"
+                  alt="Yaswanth T"
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
 
               {/* Floating badge */}
@@ -101,14 +97,17 @@ export default function About() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <p className="text-white/70 font-inter leading-relaxed mb-6 text-base">
-              I'm a passionate <span className="text-neon-cyan">Full-Stack Developer</span> with a Master's in Computer Applications, 
-              specializing in building scalable, production-grade web applications with modern technologies.
+            <p className="text-white/70 font-inter leading-relaxed mb-4 text-base">
+              I'm a passionate <span className="text-neon-cyan">Full-Stack Developer</span> with a Master's in Computer Applications, focused on building modern, scalable, and user-friendly web applications. I enjoy turning ideas into real-world digital experiences by combining clean frontend design with strong backend architecture.
+            </p>
+            <p className="text-white/50 font-inter leading-relaxed mb-4 text-sm">
+              My expertise includes creating responsive and interactive interfaces using <span className="text-neon-cyan/80">React.js</span> and developing reliable backend systems with <span className="text-neon-purple/80">Spring Boot</span>, REST APIs, and MySQL. I'm especially interested in building applications that are not only functional, but also smooth, efficient, and visually engaging.
+            </p>
+            <p className="text-white/50 font-inter leading-relaxed mb-4 text-sm">
+              I love exploring new technologies, improving user experiences, and solving complex problems through code. Whether it's designing intuitive UI, optimizing backend performance, or creating immersive web experiences, I enjoy every part of the development process.
             </p>
             <p className="text-white/50 font-inter leading-relaxed mb-8 text-sm">
-              From crafting pixel-perfect React interfaces to designing robust Spring Boot microservices, 
-              I bring end-to-end development expertise. I thrive at the intersection of elegant UI and 
-              powerful backend architecture.
+              Currently, I'm focused on growing as a software developer by building impactful projects, learning modern technologies, and creating applications that deliver both performance and great user experience.
             </p>
 
             {/* Highlights */}

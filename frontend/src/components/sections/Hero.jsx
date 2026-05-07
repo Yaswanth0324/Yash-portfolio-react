@@ -5,11 +5,13 @@ import { GithubIcon, LinkedinIcon } from '../ui/BrandIcons'
 import { incrementResumeDownload, getVisitorCount, getResumeDownloadCount } from '../../api/portfolio'
 
 const TITLES = [
-  'Full-Stack Developer',
-  'MCA Graduate',
-  'React & Java Enthusiast',
-  'Cloud & DevOps Explorer',
-  'Building Scalable Apps',
+  'Java Full Stack Developer',
+  'Software Developer',
+  'Software Engineer',
+  'Frontend Developer',
+  'Web Developer',
+  'Backend Developer',
+  'AI Developer',
 ]
 
 function useTypewriter(items, speed = 60, pause = 1800) {
@@ -58,11 +60,12 @@ export default function Hero() {
 
   const handleResumeDownload = async () => {
     await incrementResumeDownload().catch(() => {})
-    // Link to actual resume file
     const a = document.createElement('a')
-    a.href = '/resume.pdf'
-    a.download = 'Developer_Resume.pdf'
+    a.href = '/Yash-Resume.pdf'
+    a.download = 'Yash-Resume.pdf'
+    document.body.appendChild(a)
     a.click()
+    document.body.removeChild(a)
   }
 
   return (
@@ -117,7 +120,8 @@ export default function Hero() {
           className="font-orbitron font-black text-5xl md:text-7xl lg:text-8xl mb-4 leading-none"
         >
           <span className="block text-white/20 text-sm font-mono tracking-[0.5em] mb-4">DEVELOPER PROFILE</span>
-          <span className="gradient-text">YOUR NAME</span>
+          <span className="gradient-text">Yaswanth</span>
+            <span className="text-white/80"> T</span>
         </motion.h1>
 
         {/* Typewriter */}

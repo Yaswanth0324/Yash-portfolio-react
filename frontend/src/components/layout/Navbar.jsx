@@ -54,12 +54,13 @@ export default function Navbar() {
         <div className="section-container flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
-            className="font-orbitron font-bold text-lg tracking-wider cursor-pointer"
+            className="font-orbitron font-bold text-lg tracking-wider cursor-pointer flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <span className="gradient-text">AI</span>
-            <span className="text-white/80"> CORE</span>
+            <img src="/Yaswanth.png" alt="Yaswanth" className="w-8 h-8 rounded-full object-cover" />
+            <span className="gradient-text">Yaswanth</span>
+            <span className="text-white/80">T</span>
           </motion.div>
 
           {/* Desktop Links */}
@@ -136,3 +137,15 @@ export default function Navbar() {
     </>
   )
 }
+
+          <div className="mt-4 flex flex-col items-center gap-1 text-sm text-white/60">
+            <span>Java Full Stack Developer</span>
+            <span>Software Developer</span>
+            <span>Software Engineer</span>
+            <span>Frontend Developer</span>
+            <span>Web Developer</span>
+            <span>Backend Developer</span>
+            <span>AI Developer</span>
+            <title>Yaswanth — Developer Portfolio</title>
+            <meta property="og:title" content="Yaswanth — Developer Portfolio" />
+          </div>
