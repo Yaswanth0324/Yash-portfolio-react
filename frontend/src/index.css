@@ -24,8 +24,73 @@
   --dark-800: #e2e8f0;
   --dark-700: #cbd5e1;
   --dark-600: #94a3b8;
-  --glass-bg: rgba(0,0,0,0.04);
+  --glass-bg: rgba(255,255,255,0.65);
   --glass-border: rgba(0,80,200,0.15);
+}
+
+/* ===== LIGHT MODE OVERRIDES ===== */
+
+/* Body text */
+.light body {
+  color: #1e293b;
+}
+
+/* White text → dark in light mode */
+.light .text-white          { color: #0f172a !important; }
+.light .text-white\/90      { color: #1e293b !important; }
+.light .text-white\/80      { color: #1e293b !important; }
+.light .text-white\/70      { color: #334155 !important; }
+.light .text-white\/60      { color: #475569 !important; }
+.light .text-white\/50      { color: #475569 !important; }
+.light .text-white\/40      { color: #64748b !important; }
+.light .text-white\/30      { color: #94a3b8 !important; }
+.light .text-white\/20      { color: #94a3b8 !important; }
+.light .text-white\/10      { color: #cbd5e1 !important; }
+
+/* Glass cards — white background + visible border */
+.light .glass {
+  background: rgba(255,255,255,0.75) !important;
+  border-color: rgba(0,80,200,0.12) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+
+/* Headings explicitly set as white */
+.light h1, .light h2, .light h3, .light h4 {
+  color: #0f172a;
+}
+
+/* Cyber grid — more subtle on light */
+.light .cyber-bg {
+  background-image:
+    linear-gradient(rgba(0,80,200,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,80,200,0.04) 1px, transparent 1px);
+}
+
+/* Font-mono labels */
+.light .font-mono {
+  color: #334155;
+}
+
+/* Radial glows invisible on light — reduce opacity */
+.light [style*="radial-gradient"] {
+  opacity: 0.4;
+}
+
+/* Section backgrounds */
+.light section {
+  background: transparent;
+}
+
+/* GitHub icon fix — white SVG → dark in light mode */
+.light svg[fill="#fff"],
+.light svg[fill="white"],
+.light svg[fill="#ffffff"] {
+  fill: #1e293b !important;
+}
+
+/* Also target inline fill via currentColor parent */
+.light .github-icon path {
+  fill: #1e293b;
 }
 
 * {

@@ -43,7 +43,7 @@ function useTypewriter(items, speed = 60, pause = 1800) {
 }
 
 const socials = [
-  { icon: GithubIcon, href: 'https://github.com/Yaswanth0324', label: 'GitHub', color: '#fff' },
+  { icon: GithubIcon, href: 'https://github.com/Yaswanth0324', label: 'GitHub', color: 'currentColor' },
   { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/yaswanth-sde/', label: 'LinkedIn', color: '#0077B5' },
   { icon: Mail, href: 'mailto:yash95632@gmail.com', label: 'Email', color: '#00f5ff' },
 ]

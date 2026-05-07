@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { submitContact } from '../../api/portfolio'
 
 const socials = [
-  { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/Yaswanth0324', color: '#fff' },
+  { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/Yaswanth0324', color: 'currentColor' },
   { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/yaswanth-sde/', color: '#0077B5' },
   { icon: Mail, label: 'Email', href: 'mailto:yash95632@gmail.com', color: '#00f5ff' },
 ]
