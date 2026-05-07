@@ -42,7 +42,7 @@ function BootText({ onComplete }) {
 
       <motion.div className="mb-8 text-center" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
         <div className="font-orbitron font-black text-5xl md:text-7xl tracking-widest gradient-text glow-cyan mb-2">Portfolio</div>
-        <div className="font-mono text-xs text-white/40 tracking-[0.5em]">DEVELOPER INTERFACE v2.0</div>
+        <div className="font-mono text-xs tracking-[0.5em]" style={{ color: 'rgba(255,255,255,0.4)' }}>DEVELOPER INTERFACE v2.0</div>
       </motion.div>
 
       <motion.div
@@ -54,7 +54,7 @@ function BootText({ onComplete }) {
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
           <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'var(--neon-green)' }} />
-          <span className="font-mono text-[10px] text-white/30 ml-2">SYSTEM BOOT</span>
+          <span className="font-mono text-[10px] ml-2" style={{ color: 'rgba(255,255,255,0.3)' }}>SYSTEM BOOT</span>
         </div>
         <div className="space-y-1.5 min-h-[140px]">
           <AnimatePresence>
@@ -82,7 +82,7 @@ export default function PortfolioIntro({ onComplete }) {
   const [nodesActivated, setNodesActivated] = useState(false)
 
   return (
-    <div className="fixed inset-0 z-[200] overflow-hidden" style={{ background: 'var(--dark-900)' }}>
+    <div className="intro-overlay fixed inset-0 z-[200] overflow-hidden" style={{ background: '#020408' }}>
       <div className="absolute inset-0 cyber-bg opacity-40" />
 
       {/* Corner decorations */}
@@ -108,10 +108,10 @@ export default function PortfolioIntro({ onComplete }) {
         {stage === 'interactive' && (
           <motion.div key="interactive" className="absolute inset-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <div className="absolute top-6 left-0 right-0 text-center z-20 pointer-events-none">
-              <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="font-mono text-xs text-white/50 tracking-widest">
+              <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="font-mono text-xs tracking-widest" style={{ color: 'rgba(255,255,255,0.5)' }}>
                 ACTIVATION SEQUENCE INITIATED
               </motion.div>
-              <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="font-orbitron font-bold text-lg text-white/80 mt-1">
+              <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="font-orbitron font-bold text-lg mt-1" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 TAP SKILL NODES TO ACTIVATE CORE
               </motion.h2>
             </div>
@@ -128,13 +128,14 @@ export default function PortfolioIntro({ onComplete }) {
       <motion.button
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
         onClick={onComplete}
-        className="fixed top-5 right-5 z-[300] font-mono text-xs text-white/40 hover:text-neon-cyan transition-colors tracking-widest border border-white/10 hover:border-neon-cyan/40 px-3 py-1.5 rounded glass"
+        className="fixed top-5 right-5 z-[300] font-mono text-xs hover:text-neon-cyan transition-colors tracking-widest border hover:border-neon-cyan/40 px-3 py-1.5 rounded glass"
+        style={{ color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.1)' }}
         id="skip-intro-btn"
       >
         SKIP INTRO ▶
       </motion.button>
 
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-[9px] text-white/20 tracking-[0.3em] z-20">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-[9px] tracking-[0.3em] z-20" style={{ color: 'rgba(255,255,255,0.2)' }}>
         PORTFOLIO · DEVELOPER INTERFACE · 2026
       </div>
     </div>

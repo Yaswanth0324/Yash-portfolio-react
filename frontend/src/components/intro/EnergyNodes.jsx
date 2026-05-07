@@ -136,11 +136,11 @@ export default function EnergyNodes({ onAllActivated }) {
 
       {/* Progress bar */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-64 z-20">
-        <div className="flex justify-between text-xs font-mono text-white/50 mb-2">
+        <div className="flex justify-between text-xs font-mono mb-2" style={{ color: 'rgba(255,255,255,0.5)' }}>
           <span>ACTIVATION PROGRESS</span>
           <span style={{ color: 'var(--neon-cyan)' }}>{activated.size}/{NODES.length}</span>
         </div>
-        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+        <div className="h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.1)' }}>
           <motion.div
             className="h-full rounded-full"
             animate={{ width: `${progress}%` }}
@@ -148,7 +148,7 @@ export default function EnergyNodes({ onAllActivated }) {
             style={{ background: 'linear-gradient(90deg, var(--neon-cyan), var(--neon-purple))', boxShadow: '0 0 8px var(--neon-cyan)' }}
           />
         </div>
-        <p className="text-center text-[10px] font-mono text-white/30 mt-2 tracking-widest">
+        <p className="text-center text-[10px] font-mono mt-2 tracking-widest" style={{ color: 'rgba(255,255,255,0.3)' }}>
           {activated.size === 0 ? 'TAP SKILL NODES TO ACTIVATE' :
            activated.size < NODES.length ? `${NODES.length - activated.size} MODULES REMAINING` :
            'ALL MODULES ONLINE'}

@@ -169,16 +169,17 @@ export default function Contact() {
               {[
                 { icon: Mail, label: 'yash95632@gmail.com', color: 'var(--neon-cyan)', href: 'mailto:yash95632@gmail.com' },
                 { icon: Phone, label: '+91 8247302169', color: 'var(--neon-green)', href: 'tel:+918247302169' },
-              ].map(({ icon: Icon, label, color }) => (
-                <div key={label} className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg glass flex items-center justify-center"
+              ].map(({ icon: Icon, label, color, href }) => (
+                <a key={label} href={href} className="flex items-center gap-3 group">
+                  <div className="w-9 h-9 rounded-lg glass flex items-center justify-center transition-colors group-hover:border-opacity-60"
                     style={{ border: `1px solid ${color}33` }}>
                     <Icon size={14} color={color} />
                   </div>
-                  <span className="font-mono text-sm text-white/50">{label}</span>
-                </div>
+                  <span className="font-mono text-sm text-white/50 group-hover:text-white/80 transition-colors">{label}</span>
+                </a>
               ))}
             </div>
+
 
             {/* Socials */}
             <div>

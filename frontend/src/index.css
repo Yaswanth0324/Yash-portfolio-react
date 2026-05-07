@@ -93,6 +93,57 @@
   fill: #1e293b;
 }
 
+/* ===== INTRO OVERLAY — always dark, never affected by light mode ===== */
+.light .intro-overlay,
+.light .intro-overlay * {
+  /* Reset text overrides */
+  color: inherit !important;
+}
+
+/* Force dark background on intro */
+.light .intro-overlay {
+  background: #020408 !important;
+}
+
+/* Keep glass dark inside intro */
+.light .intro-overlay .glass {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(0, 245, 255, 0.12) !important;
+  box-shadow: none !important;
+}
+
+/* Keep headings white inside intro */
+.light .intro-overlay h1,
+.light .intro-overlay h2,
+.light .intro-overlay h3,
+.light .intro-overlay h4 {
+  color: #ffffff !important;
+}
+
+/* Keep font-mono white inside intro */
+.light .intro-overlay .font-mono {
+  color: inherit !important;
+}
+
+/* Keep cyber grid dark inside intro */
+.light .intro-overlay .cyber-bg {
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px) !important;
+}
+
+/* Keep SVG icons white inside intro */
+.light .intro-overlay svg[fill="#fff"],
+.light .intro-overlay svg[fill="white"],
+.light .intro-overlay svg[fill="#ffffff"] {
+  fill: #ffffff !important;
+}
+
+/* Keep radial glows fully visible inside intro */
+.light .intro-overlay [style*="radial-gradient"] {
+  opacity: 1 !important;
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -10,7 +10,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/5 bg-dark-900 py-12 overflow-hidden">
+    <footer className="relative border-t border-white/5 py-12 overflow-hidden" style={{ background: 'var(--dark-900)' }}>
       {/* Animated background */}
       <div className="absolute inset-0 cyber-bg opacity-30" />
       <div className="absolute top-0 left-0 right-0 h-px"
@@ -20,8 +20,22 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand */}
           <div className="text-center md:text-left">
-            <div className="font-orbitron font-bold text-xl gradient-text mb-1">YASWANTH</div>
+            <div className="font-orbitron font-bold text-xl gradient-text mb-1">YASWANTH T</div>
             <p className="font-mono text-xs text-white/40">Full-Stack Developer Portfolio</p>
+          </div>
+
+          {/* Quick nav */}
+          <div className="hidden md:flex items-center gap-5 flex-wrap justify-center">
+            {['About', 'Skills', 'Projects', 'Experience', 'Education', 'Contact'].map(link => (
+              <button
+                key={link}
+                onClick={() => document.querySelector(`#${link.toLowerCase()}`)?.scrollIntoView({ behavior: 'smooth' })}
+                className="font-mono text-[11px] text-white/30 hover:text-neon-cyan transition-colors tracking-widest uppercase"
+                style={{ '--neon-cyan': '#00f5ff' }}
+              >
+                {link}
+              </button>
+            ))}
           </div>
 
           {/* Social icons */}
@@ -42,18 +56,15 @@ export default function Footer() {
               </motion.a>
             ))}
           </div>
-
-          {/* Copyright */}
-          <div className="text-center text-xs text-white/30 font-mono">
-            <p>© 2026 Dev Portfolio</p>
-            <p className="mt-1">Built with <span className="text-neon-pink">♥</span> & React</p>
-          </div>
         </div>
 
-        {/* Bottom glow line */}
-        <div className="mt-8 pt-6 border-t border-white/5 text-center">
+        {/* Bottom row */}
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-2">
           <p className="font-mono text-[10px] text-white/20 tracking-widest uppercase">
-            System Status: <span style={{ color: 'var(--neon-green)' }}>Online</span> DEVELOPER: <span style={{ color: 'var(--neon-cyan)' }}>Activated</span>
+            System Status: <span style={{ color: 'var(--neon-green)' }}>Online</span> · Developer: <span style={{ color: 'var(--neon-cyan)' }}>Activated</span>
+          </p>
+          <p className="text-center text-xs text-white/20 font-mono">
+            © 2026 Yaswanth T · Built with <span className="text-neon-pink">♥</span> using React &amp; Spring Boot
           </p>
         </div>
       </div>

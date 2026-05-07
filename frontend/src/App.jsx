@@ -86,24 +86,27 @@ export default function App() {
     // Increment visitor count on load
     incrementVisitor().catch(() => {})
 
-    // Check if intro was already seen (optional: always show intro)
-    // const seen = sessionStorage.getItem('introSeen')
-    // if (seen) setShowPortfolio(true)
+    // Force dark on html so intro is always cinematic dark
+    document.documentElement.classList.add('dark')
+    document.documentElement.classList.remove('light')
   }, [])
 
   const handleIntroComplete = () => {
     sessionStorage.setItem('introSeen', 'true')
     setShowPortfolio(true)
+    // ThemeProvider will apply the saved theme when it mounts with Portfolio
   }
 
   return (
-    <ThemeProvider>
+    <>
       <CustomCursor />
       {!showPortfolio ? (
         <PortfolioIntro key="intro" onComplete={handleIntroComplete} />
       ) : (
-        <Portfolio key="portfolio" />
+        <ThemeProvider>
+          <Portfolio key="portfolio" />
+        </ThemeProvider>
       )}
-    </ThemeProvider>
+    </>
   )
 }

@@ -139,14 +139,3 @@ export default function Navbar() {
   )
 }
 
-          <div className="mt-4 flex flex-col items-center gap-1 text-sm text-white/60">
-            <span>Java Full Stack Developer</span>
-            <span>Software Developer</span>
-            <span>Software Engineer</span>
-            <span>Frontend Developer</span>
-            <span>Web Developer</span>
-            <span>Backend Developer</span>
-            <span>AI Developer</span>
-            <title>Yaswanth — Developer Portfolio</title>
-            <meta property="og:title" content="Yaswanth — Developer Portfolio" />
-          </div>
