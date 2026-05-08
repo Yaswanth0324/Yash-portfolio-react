@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const BASE = '/api'
+// In production (Vercel), VITE_API_BASE_URL points to the Render backend.
+// In local dev, falls back to '/api' which Vite proxies to localhost:8080.
+const BASE = (import.meta.env.VITE_API_BASE_URL || '') + '/api'
 
 export const incrementVisitor = () => axios.post(`${BASE}/visit`).catch(() => {})
 export const getVisitorCount = () => axios.get(`${BASE}/visit/count`).then(r => r.data)
