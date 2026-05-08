@@ -1,0 +1,55 @@
+# =============================================================
+# render.yaml — Render Deployment Configuration
+# Infrastructure-as-Code for Render.com
+#
+# HOW TO USE:
+#   1. Push this file to your GitHub repo
+#   2. Go to render.com → New → Web Service
+#   3. Connect your GitHub repo
+#   4. Render auto-detects this file
+#   5. Fill in the environment variable values in Render dashboard
+# =============================================================
+
+services:
+  - type: web                           # Web service (exposes HTTP)
+    name: portfolio-backend             # Service name in Render dashboard
+    runtime: docker                     # Use Docker (not buildpack)
+
+    # Docker image from Docker Hub (updated by GitHub Actions)
+    image:
+      url: docker.io/YOUR_DOCKERHUB_USERNAME/portfolio-backend:latest
+
+    # Render assigns a dynamic PORT — our Dockerfile reads it
+    # Health check — Render pings this to confirm the app is alive
+    healthCheckPath: /actuator/health
+
+    # Auto-deploy: when Render detects a new image, redeploy
+    autoDeploy: true
+
+    # ── Environment Variables ───────────────────────────────
+    # Set these in Render Dashboard → Environment tab
+    # Or add them here with `sync: false` to keep them secret
+    envVars:
+      # Spring profile — activates application-prod.properties
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+
+      # TiDB Cloud Database URL
+      - key: DB_URL
+        sync: false                     # Set value in Render dashboard
+
+      # TiDB Cloud Username
+      - key: DB_USERNAME
+        sync: false
+
+      # TiDB Cloud Password
+      - key: DB_PASSWORD
+        sync: false
+
+      # Vercel frontend URL for CORS
+      - key: ALLOWED_ORIGINS
+        sync: false                     # e.g. https://your-portfolio.vercel.app
+
+      # Java memory tuning for Render free tier (512MB RAM)
+      - key: JAVA_OPTS
+        value: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"

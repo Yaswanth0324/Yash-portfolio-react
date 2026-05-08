@@ -1,0 +1,38 @@
+# =============================================================
+# .dockerignore — Portfolio Backend
+# Keeps Docker build context clean and fast
+# =============================================================
+
+# Maven build output (will be rebuilt inside Docker)
+target/
+
+# IDE and editor files
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Local environment / secrets (NEVER send to Docker)
+.env
+.env.local
+*.env
+
+# Test reports (only inside target — NOT pom.xml)
+target/surefire-reports/
+
+# Logs
+*.log
+logs/
+
+# Docker files (no need to copy into itself)
+Dockerfile
+.dockerignore
