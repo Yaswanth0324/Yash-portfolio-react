@@ -29,11 +29,12 @@ public class CorsConfig implements WebMvcConfigurer {
         System.out.println("=================================================");
 
         registry.addMapping("/api/**")
-                .allowedOriginPatterns(originsList.toArray(new String[0]))  // Use patterns instead of exact origins
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With")
-                .exposedHeaders("*")  // Allow frontend to read all response headers
+                .allowedOriginPatterns(originsList.toArray(new String[0]))
+                .allowedMethods("*")
+                .allowedHeaders("*")
+                .exposedHeaders("*")
                 .allowCredentials(false)
                 .maxAge(3600);
+
     }
 }
