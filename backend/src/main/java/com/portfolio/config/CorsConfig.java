@@ -13,21 +13,14 @@ import java.util.List;
 @Configuration
 public class CorsConfig {
 
-    // Reads from application-prod.properties → allowed.origins=${ALLOWED_ORIGINS}
-    // Falls back to localhost for local development
-    @Value("${allowed.origins:https://yash-portfolio-react-kappa.vercel.app}")
-    private String allowedOriginsRaw;
-
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
 
-        // Split comma-separated origins (supports multiple domains)
-        List<String> origins = Arrays.asList(allowedOriginsRaw.split(","));
-
         config.setAllowCredentials(false);
-        config.setAllowedOrigins(origins);
+        // Allow all origins (*) so Vercel can always connect
+        config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setMaxAge(3600L);
