@@ -28,6 +28,12 @@ public class CorsConfig {
                 .map(o -> o.endsWith("/") ? o.substring(0, o.length() - 1) : o)
                 .toList();
 
+        System.out.println("=================================================");
+        System.out.println("CORS CONFIGURATION REGISTERED!");
+        System.out.println("RAW allowedOrigins property: [" + allowedOrigins + "]");
+        System.out.println("PARSED originsList: " + originsList);
+        System.out.println("=================================================");
+
         config.setAllowedOrigins(originsList);
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"));
