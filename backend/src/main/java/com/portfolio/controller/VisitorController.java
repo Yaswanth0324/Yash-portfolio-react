@@ -10,7 +10,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/visit")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class VisitorController {
 
     private final VisitorService visitorService;
