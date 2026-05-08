@@ -1,21 +1,23 @@
 package com.portfolio.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-public class CorsConfig implements WebMvcConfigurer {
+public class CorsConfig {
 
     @Value("${allowed.origins:https://yash-portfolio-react-kappa.vercel.app}")
     private String allowedOrigins;
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
+    @Bean
+    public CorsFilter corsFilter() {
         List<String> originsList = Arrays.stream(allowedOrigins.split(","))
                 .map(String::trim)
                 .map(o -> o.replaceAll("^\"|\"$", ""))
@@ -28,13 +30,16 @@ public class CorsConfig implements WebMvcConfigurer {
         System.out.println("Allowed Origins: " + originsList);
         System.out.println("=================================================");
 
-        registry.addMapping("/api/**")
-                .allowedOriginPatterns(originsList.toArray(new String[0]))
-                .allowedMethods("*")
-                .allowedHeaders("*")
-                .exposedHeaders("*")
-                .allowCredentials(false)
-                .maxAge(3600);
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOriginPatterns(originsList);
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setExposedHeaders(List.of("*"));
+        config.setAllowCredentials(false);
+        config.setMaxAge(3600L);
 
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/api/**", config);
+        return new CorsFilter(source);
     }
 }
