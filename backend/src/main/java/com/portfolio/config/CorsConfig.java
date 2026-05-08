@@ -21,12 +21,17 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
 
-        List<String> originsList = Arrays.stream(allowedOrigins.split(","))
+        List<String> originsList = new java.util.ArrayList<>(Arrays.stream(allowedOrigins.split(","))
                 .map(String::trim)
                 .map(o -> o.replaceAll("^\"|\"$", "")) // strip double quotes
                 .map(o -> o.replaceAll("^'|'$", ""))   // strip single quotes
                 .map(o -> o.endsWith("/") ? o.substring(0, o.length() - 1) : o)
-                .toList();
+                .toList());
+
+        // HARD FALLBACK: Always allow the exact Vercel URL just in case the env var is messed up
+        if (!originsList.contains("https://yash-portfolio-react-kappa.vercel.app")) {
+            originsList.add("https://yash-portfolio-react-kappa.vercel.app");
+        }
 
         System.out.println("=================================================");
         System.out.println("CORS CONFIGURATION REGISTERED!");
