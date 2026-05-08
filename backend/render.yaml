@@ -17,7 +17,7 @@ services:
 
     # Docker image from Docker Hub (updated by GitHub Actions)
     image:
-      url: docker.io/YOUR_DOCKERHUB_USERNAME/portfolio-backend:latest
+      url: docker.io/yaswanth2403/portfolio-backend:latest
 
     # Render assigns a dynamic PORT — our Dockerfile reads it
     # Health check — Render pings this to confirm the app is alive

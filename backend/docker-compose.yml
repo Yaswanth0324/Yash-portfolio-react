@@ -1,55 +1,41 @@
 version: "3.9"
 
+# ============================================================
+# docker-compose.yml — LOCAL DEVELOPMENT with TiDB Cloud
+# Uses the same TiDB Cloud database as production.
+# Run with: docker compose up --build
+# ============================================================
+
 services:
   backend:
     build:
       context: .
       dockerfile: Dockerfile
+    image: yaswanth2403/portfolio-backend:latest
+    container_name: portfolio-backend
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/portfolio_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: password
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_SHOW_SQL: "false"
-      PORT: 8080
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - portfolio-network
+      # ── Spring Profile ─────────────────────────────────────
+      SPRING_PROFILES_ACTIVE: prod
+
+      # ── TiDB Cloud Credentials ─────────────────────────────
+      # For local dev, you can either use .env file or set these directly.
+      # Use a .env file (not committed to git) to override these values.
+      DB_URL: jdbc:mysql://gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com:4000/portfolio_db?createDatabaseIfNotExist=true&useSSL=true&requireSSL=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+      DB_USERNAME: ${DB_USERNAME:-2wueky2jdh5kLoo.root}
+      DB_PASSWORD: ${DB_PASSWORD:-eq5GsbCCTEwgkyFr}
+
+      # ── CORS ───────────────────────────────────────────────
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173}
+
+      # ── JVM Memory Tuning ──────────────────────────────────
+      JAVA_TOOL_OPTIONS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
+
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 40s
-
-  mysql:
-    image: mysql:8.0
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: portfolio_db
-      MYSQL_USER: portfolio_user
-      MYSQL_PASSWORD: portfolio_pass
-    volumes:
-      - mysql_data:/var/lib/mysql
-    networks:
-      - portfolio-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-networks:
-  portfolio-network:
-    driver: bridge
-
-volumes:
-  mysql_data:
+      start_period: 60s
