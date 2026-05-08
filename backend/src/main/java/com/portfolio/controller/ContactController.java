@@ -15,6 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/contact")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "https://yash-portfolio-react-kappa.vercel.app")
 public class ContactController {
 
     private final ContactService contactService;

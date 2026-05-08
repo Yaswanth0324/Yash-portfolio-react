@@ -45,7 +45,7 @@ public class CorsConfig {
         config.setAllowCredentials(false);
         config.setMaxAge(3600L);
 
-        source.registerCorsConfiguration("/api/**", config);
+        source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
 }

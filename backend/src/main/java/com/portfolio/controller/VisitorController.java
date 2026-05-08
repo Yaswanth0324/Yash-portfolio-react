@@ -10,6 +10,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/visit")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "https://yash-portfolio-react-kappa.vercel.app")
 public class VisitorController {
 
     private final VisitorService visitorService;
