@@ -4,8 +4,23 @@ import axios from 'axios'
 // In local dev, falls back to '/api' which Vite proxies to localhost:8080.
 const BASE = (import.meta.env.VITE_API_BASE_URL || '') + '/api'
 
-export const incrementVisitor = () => axios.post(`${BASE}/visit`).catch(() => {})
-export const getVisitorCount = () => axios.get(`${BASE}/visit/count`).then(r => r.data)
-export const incrementResumeDownload = () => axios.post(`${BASE}/resume/download`).catch(() => {})
-export const getResumeDownloadCount = () => axios.get(`${BASE}/resume/download/count`).then(r => r.data)
-export const submitContact = (data) => axios.post(`${BASE}/contact`, data)
+export const incrementVisitor = () => axios.post(`${BASE}/visit`).catch(err => {
+    console.error("Failed to increment visitor count:", err);
+    return false;
+});
+export const getVisitorCount = () => axios.get(`${BASE}/visit/count`).then(r => r.data).catch(err => {
+    console.error("Failed to get visitor count:", err);
+    return 0;
+});
+export const incrementResumeDownload = () => axios.post(`${BASE}/resume/download`).catch(err => {
+    console.error("Failed to increment resume download:", err);
+    return false;
+});
+export const getResumeDownloadCount = () => axios.get(`${BASE}/resume/download/count`).then(r => r.data).catch(err => {
+    console.error("Failed to get resume download count:", err);
+    return 0;
+});
+export const submitContact = (data) => axios.post(`${BASE}/contact`, data).catch(err => {
+    console.error("Failed to submit contact form:", err);
+    throw err;
+});
