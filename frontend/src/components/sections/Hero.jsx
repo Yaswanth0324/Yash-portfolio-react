@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Download, Eye, Mail } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '../ui/BrandIcons'
-import { incrementResumeDownload, getVisitorCount, getResumeDownloadCount } from '../../api/portfolio'
+import { getVisitorCount, getResumeDownloadCount, incrementResumeDownload, incrementVisitor } from '../../api/portfolio'
 
 const TITLES = [
   'Java Full Stack Developer',
@@ -53,13 +53,39 @@ export default function Hero() {
   const typeText = useTypewriter(TITLES)
 
   useEffect(() => {
-    Promise.all([getVisitorCount(), getResumeDownloadCount()])
-      .then(([v, d]) => setStats({ visitors: v ?? 1247, downloads: d ?? 83 }))
-      .catch(() => setStats({ visitors: 1247, downloads: 83 }))
+    let cancelled = false
+
+    const loadStats = async () => {
+      const visitResult = await incrementVisitor()
+      const [visitors, downloads] = await Promise.all([
+        visitResult?.count ?? getVisitorCount(),
+        getResumeDownloadCount(),
+      ])
+
+      if (!cancelled) {
+        setStats({
+          visitors: Number.isFinite(visitors) ? visitors : 0,
+          downloads: Number.isFinite(downloads) ? downloads : 0,
+        })
+      }
+    }
+
+    loadStats().catch(() => {
+      if (!cancelled) {
+        setStats({ visitors: 0, downloads: 0 })
+      }
+    })
+
+    return () => {
+      cancelled = true
+    }
   }, [])
 
   const handleResumeDownload = async () => {
-    await incrementResumeDownload().catch(() => {})
+    const result = await incrementResumeDownload().catch(() => null)
+    if (result?.count != null) {
+      setStats(prev => ({ ...prev, downloads: result.count }))
+    }
     const a = document.createElement('a')
     a.href = '/Yash-Resume.pdf'
     a.download = 'Yash-Resume.pdf'

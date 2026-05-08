@@ -25,7 +25,7 @@ RUN mvn clean package -DskipTests -B
 FROM eclipse-temurin:17-jre-jammy
 
 # Metadata labels (good practice for Docker Hub)
-LABEL maintainer="Yaswanth <your-email@gmail.com>"
+LABEL maintainer="Yaswanth <yash95632@gmail.com>"
 LABEL org.opencontainers.image.title="portfolio-backend"
 LABEL org.opencontainers.image.description="Spring Boot REST API for Portfolio (Java 17)"
 LABEL org.opencontainers.image.source="https://github.com/Yaswanth0324/Yash-portfolio-react"
@@ -49,15 +49,10 @@ USER appuser
 ENV PORT=8080
 
 # Expose the port (documentation only — Render/Railway map it automatically)
-EXPOSE ${PORT}
+EXPOSE 8080
 
 # JVM tuning for containers:
 #   -XX:+UseContainerSupport  → respects cgroup memory limits
 #   -XX:MaxRAMPercentage=75   → uses 75% of container RAM for heap
 #   -Djava.security.egd      → faster startup on Linux containers
-ENTRYPOINT ["sh", "-c", "java \
-  -XX:+UseContainerSupport \
-  -XX:MaxRAMPercentage=75.0 \
-  -Djava.security.egd=file:/dev/./urandom \
-  -Dserver.port=${PORT} \
-  -jar app.jar"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]

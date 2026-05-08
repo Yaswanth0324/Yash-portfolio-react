@@ -14,7 +14,6 @@ import Experience from './components/sections/Experience'
 import Education from './components/sections/Education'
 import Certifications from './components/sections/Certifications'
 import Contact from './components/sections/Contact'
-import { incrementVisitor } from './api/portfolio'
 import { Mail } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from './components/ui/BrandIcons'
 
@@ -83,9 +82,6 @@ export default function App() {
   const [showPortfolio, setShowPortfolio] = useState(false)
 
   useEffect(() => {
-    // Increment visitor count on load
-    incrementVisitor().catch(() => {})
-
     // Force dark on html so intro is always cinematic dark
     document.documentElement.classList.add('dark')
     document.documentElement.classList.remove('light')

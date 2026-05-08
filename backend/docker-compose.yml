@@ -22,9 +22,9 @@ services:
       # ── TiDB Cloud Credentials ─────────────────────────────
       # For local dev, you can either use .env file or set these directly.
       # Use a .env file (not committed to git) to override these values.
-      DB_URL: jdbc:mysql://gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com:4000/portfolio_db?createDatabaseIfNotExist=true&useSSL=true&requireSSL=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
-      DB_USERNAME: ${DB_USERNAME:-2wueky2jdh5kLoo.root}
-      DB_PASSWORD: ${DB_PASSWORD:-eq5GsbCCTEwgkyFr}
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
 
       # ── CORS ───────────────────────────────────────────────
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173}

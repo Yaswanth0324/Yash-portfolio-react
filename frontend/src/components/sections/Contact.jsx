@@ -96,6 +96,14 @@ export default function Contact() {
       toast.error('Please fill in all fields.')
       return
     }
+    if (form.name.trim().length < 2) {
+      toast.error('Name must be at least 2 characters.')
+      return
+    }
+    if (form.message.trim().length < 10) {
+      toast.error('Message must be at least 10 characters.')
+      return
+    }
     setLoading(true)
     try {
       await submitContact(form)
@@ -110,8 +118,14 @@ export default function Contact() {
         iconTheme: { primary: '#39ff14', secondary: '#040d14' },
       })
       setForm({ name: '', email: '', message: '' })
-    } catch {
-      toast.error('Transmission failed. Try again.', {
+    } catch (error) {
+      const apiMessage = error?.response?.data?.message
+      const validationErrors = error?.response?.data
+      const fallback = typeof apiMessage === 'string'
+        ? apiMessage
+        : validationErrors?.message || validationErrors?.error || Object.values(validationErrors || {})[0] || 'Transmission failed. Try again.'
+
+      toast.error(fallback, {
         style: {
           background: '#040d14',
           border: '1px solid rgba(255,45,120,0.4)',
