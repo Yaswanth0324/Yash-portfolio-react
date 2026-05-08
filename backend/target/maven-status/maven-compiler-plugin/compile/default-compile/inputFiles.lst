@@ -10,5 +10,6 @@ C:\PortFolio\backend\src\main\java\com\portfolio\repository\ContactRepository.ja
 C:\PortFolio\backend\src\main\java\com\portfolio\repository\VisitorCountRepository.java
 C:\PortFolio\backend\src\main\java\com\portfolio\entity\ResumeDownload.java
 C:\PortFolio\backend\src\main\java\com\portfolio\entity\Contact.java
+C:\PortFolio\backend\src\main\java\com\portfolio\config\GlobalExceptionHandler.java
 C:\PortFolio\backend\src\main\java\com\portfolio\controller\ContactController.java
 C:\PortFolio\backend\src\main\java\com\portfolio\service\ResumeService.java

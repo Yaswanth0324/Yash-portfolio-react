@@ -1,51 +1,39 @@
 package com.portfolio.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-public class CorsConfig {
+public class CorsConfig implements WebMvcConfigurer {
 
     @Value("${allowed.origins:https://yash-portfolio-react-kappa.vercel.app}")
     private String allowedOrigins;
 
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-
-        List<String> originsList = new java.util.ArrayList<>(Arrays.stream(allowedOrigins.split(","))
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        List<String> originsList = Arrays.stream(allowedOrigins.split(","))
                 .map(String::trim)
-                .map(o -> o.replaceAll("^\"|\"$", "")) // strip double quotes
-                .map(o -> o.replaceAll("^'|'$", ""))   // strip single quotes
+                .map(o -> o.replaceAll("^\"|\"$", ""))
+                .map(o -> o.replaceAll("^'|'$", ""))
                 .map(o -> o.endsWith("/") ? o.substring(0, o.length() - 1) : o)
-                .toList());
-
-        // HARD FALLBACK: Always allow the exact Vercel URL just in case the env var is messed up
-        if (!originsList.contains("https://yash-portfolio-react-kappa.vercel.app")) {
-            originsList.add("https://yash-portfolio-react-kappa.vercel.app");
-        }
+                .toList();
 
         System.out.println("=================================================");
-        System.out.println("CORS CONFIGURATION REGISTERED!");
-        System.out.println("RAW allowedOrigins property: [" + allowedOrigins + "]");
-        System.out.println("PARSED originsList: " + originsList);
+        System.out.println("CORS Configuration Active");
+        System.out.println("Allowed Origins: " + originsList);
         System.out.println("=================================================");
 
-        config.setAllowedOrigins(originsList);
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"));
-        config.setAllowCredentials(false);
-        config.setMaxAge(3600L);
-
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
+        registry.addMapping("/api/**")
+                .allowedOriginPatterns(originsList.toArray(new String[0]))  // Use patterns instead of exact origins
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With")
+                .exposedHeaders("*")  // Allow frontend to read all response headers
+                .allowCredentials(false)
+                .maxAge(3600);
     }
 }

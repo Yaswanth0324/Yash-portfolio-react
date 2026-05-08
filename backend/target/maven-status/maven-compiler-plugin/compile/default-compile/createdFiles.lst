@@ -10,6 +10,7 @@ com\portfolio\repository\VisitorCountRepository.class
 com\portfolio\entity\Contact$ContactBuilder.class
 com\portfolio\service\ResumeService.class
 com\portfolio\entity\Contact.class
+com\portfolio\config\GlobalExceptionHandler.class
 com\portfolio\config\CorsConfig.class
 com\portfolio\controller\ContactController.class
 com\portfolio\entity\ResumeDownload$ResumeDownloadBuilder.class
